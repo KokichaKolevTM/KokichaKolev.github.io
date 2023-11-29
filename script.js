@@ -5,10 +5,10 @@ let map;
 $(document).ready(function () {
     navBarListener();
     detailsButtonListener();
-    // map = L.map("map");
-    // L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    //     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    // }).addTo(map);
+    map = L.map("map");
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    }).addTo(map);
 });
 
 function navBarListener() {
@@ -17,7 +17,7 @@ function navBarListener() {
         $("#city").show();
         $("#city .card-title").text(selectedCity.name);
         $("#city .card-text").text(selectedCity.main_text);
-        $("#city img").attr("src", selectedCity.img_path);
+        $("#city .card-img-top").attr("src", selectedCity.img_path);
     });
 }
 
@@ -26,17 +26,9 @@ function detailsButtonListener() {
         $(".modal-title").text(selectedCity.name);
         $(".modal-body > p").html(addNewLines(selectedCity.modal_text));
         setTimeout(() => {
-            $("#map").attr(
-                "src",
-                "https://www.openstreetmap.org/export/embed.html?bbox=" +
-                    selectedCity.map_code
-            );
-            // map.setView(selectedCity.map_code, 12);
-        }, 150);
+            map.setView(selectedCity.map_code, 12);
+        }, 250);
     });
-    // $(".modal .btn-close").on("click", function () {
-    //     $("#map").removeAttr("src");
-    // });
 }
 
 function addNewLines(s) {
