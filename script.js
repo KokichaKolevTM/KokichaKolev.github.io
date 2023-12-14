@@ -1,6 +1,5 @@
 "use strict";
-let selectedCity;
-let map;
+let selectedCity, map;
 
 $(document).ready(function () {
     navBarListener();
@@ -22,15 +21,12 @@ function navBarListener() {
 }
 
 function detailsButtonListener() {
+    const addNewLines = s => s.replaceAll("• ", "<br>• ");
     $('button[data-bs-toggle="modal"]').on("click", function () {
-        $(".modal-title").text(selectedCity.name);
-        $(".modal-body > p").html(addNewLines(selectedCity.modal_text));
-        setTimeout(() => {
-            map.setView(selectedCity.map_code, 12);
+        $("#cityExtraInfo .modal-title").text(selectedCity.name);
+        $("#cityExtraInfo .modal-body > p").html(addNewLines(selectedCity.modal_text));
+        setTimeout(function () {
+            map.setView(selectedCity.map_coords, 12);
         }, 250);
     });
-}
-
-function addNewLines(s) {
-    return s.replaceAll("• ", "<br>• ");
 }
