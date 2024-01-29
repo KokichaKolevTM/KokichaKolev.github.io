@@ -50,22 +50,7 @@
     max-width: 96vw;
     margin: 9px;
 }
-/* @media only screen and (min-width: 1200px) {
-    #city {
-        width: 800px;
-    }
-} */
 
-/* #city .card-title, 
-#cityExtraInfo .modal-title {
-    font-size: max(1.25rem, 1.20vw);
-}
-
-#city :is(.card-text, .btn), 
-#cityExtraInfo .modal-body > p,
-#nav_bar > a[id] {
-    font-size: max(1rem, 0.95vw);
-} */
 /* map */
 #map {
     border: 1px solid black;
